@@ -1,12 +1,13 @@
 const axios = require('axios');
 
 const base_url = `http://localhost:8000`
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzUxMzYzNzksImlhdCI6MTYzNTEzNjA3OX0.3dTSSBq-VPVrERN2okw9QAVmMD5gd-NJwMwKdo4_60g'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzUxNDM4OTEsImlhdCI6MTYzNTE0MzU5MX0.qxD-tBS3XLqlF6XXOZJKuFlAiy9g3Y51qyqBNeD5UuQ'
 
 let n = 0;
+let job;
 let id_node;
 let status_id;
-// let post_status;
+let post_status;
 
 main();
 
@@ -16,13 +17,17 @@ function getRandomInt(max) {
 
 function main(){
     get_data();
-    console.log(id_node);
-    console.log(status_id);
-    // const job = setInterval(() => {
-    //     n++;
-    //     post_sensor(id_node, n)
-    //     return n;
-    // }, 5000);
+
+    job = setInterval(() => {
+        n++;
+        if(status_id != 200){
+            console.log('token wrong!');
+            clearInterval(job);
+        }else{
+            post_sensor(id_node, n);
+        }
+        return n;
+    }, 5000);
 }
 
 function get_data(){
@@ -32,10 +37,12 @@ function get_data(){
         headers: {"token":`${token}`}
     }).then(function (id){
         const id_n = id.data;
+        let data;
         status_id = id.status;
         for (let i = 0; i < id_n.length ; i++) {
-            id_node = `${id_n[0]._id}`
+            data = `${id_n[0]._id}`
         }
+        id_node = data;
     })
 }
 
@@ -51,7 +58,13 @@ function post_sensor(id, number){
                 power: `${getRandomInt(20)}`
         }
     }).then(function (respond){
-
+        post_status = respond.status;
+        if(post_status != 200){
+            console.log(respond.data)
+            clearInterval(job);
+        }else{
+            console.log(respond.data);
+        }
     });
 }
 
