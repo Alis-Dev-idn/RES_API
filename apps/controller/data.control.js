@@ -37,6 +37,8 @@ const Post_Node = async (req, res) => {
 
 const Post_Sensor = async (req, res) => {
     const{node_id, suhu, kelembaban, power} = req.body
+    const idCek = await NodeSchema.findById(node_id);
+    if(!idCek) return res.status(202).send('data not found');
     const post_sensor = await SensorSchema({node_id, suhu, kelembaban, power});
     post_sensor.save();
     res.status(200).send('Ok');
@@ -51,7 +53,6 @@ const get_node = async (req, res) => {
 const get_node_id = async (req, res) => {
     const get_data = await NodeSchema.find().sort({createdAt: -1}).limit(5);
     res.status(200).send(get_data);
-
 }
 
 const get_sensor = async (req, res) => {
