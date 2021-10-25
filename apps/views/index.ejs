@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title> <%= title %> </title>
+        <link href="http://localhost:8000/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <div class="row">
+                 <div class="col-lg-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-header">
+                            <h2 class="text-center">Example</h2>
+<!--                             <button type="button" class="btn btn-outline-primary mb-2 btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Input New Node</button> -->
+                            <button type="button" class="btn btn-outline-primary mb-2 btn-sm add-data" id="modal_input" data-url="<%- Base_Url %>">Input New Node</button>
+                        </div>
+                    </div>
+                 <div>
+            </div>
+        </div>
+
+        <div class="container mt-2">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 mb-3">
+                       <div class="card shadow">
+                            <div class="card-body">
+                                <%- include('./models/table.model.node.ejs') %>
+                            </div>
+                       </div>
+                </div>
+
+                <div class="col-lg-8 col-md-8">
+                       <div class="card shadow">
+                            <h2 class="text-center mt-3" id="name"></h2>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover text-center" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>temperature</th>
+                                            <th>humidity</th>
+                                            <th>power</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="sensor">
+                                    </tbody>
+                                </table>
+                            </div>
+                       </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Modal -->
+    <%- include('./models/modal.model.ejs')%>
+
+    <!-- Java Script -->
+        <script src="<%= Base_Url %>/js/bootstrap.min.js"></script>
+        <script src="<%= Base_Url %>/js/bootstrap.bundle.min.js"></script>
+        <script src="<%= Base_Url %>/js/jquery-3.6.0.min.js"></script>
+        <script src="<%= Base_Url %>/js/sweetalert2.all.min.js"></script>
+        <script src="<%= Base_Url %>/js/request.data.js"></script>
+        <script src="<%= Base_Url %>/js/Sw-2.js"></script>
+
+    </body>
+</html>

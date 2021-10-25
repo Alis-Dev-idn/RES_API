@@ -1,0 +1,11 @@
+<% for (let i=0; i < get_data.length; i++) {%>
+     <tr>
+        <td><%= i+1 %></td>
+        <td>
+            <button type="button" class="btn btn-warning btn-sm d-grid gap-2 col-12 mx-auto node-action" data-id="<%= get_data[i].id %>" data-url="<%- Base_Url %>" data-name="<%= get_data[i].node_name %>"><%= get_data[i].node_name %></button>
+        </td>
+        <td>
+            <button type="submit" class="btn btn-primary btn-sm edit-node" data-name="<%= get_data[i].node_name %>" data-id="<%= get_data[i].id %>" data-url="<%- Base_Url %>">Edit</button>
+        </td>
+    </tr>
+<%}%>

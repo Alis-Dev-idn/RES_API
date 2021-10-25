@@ -1,0 +1,14 @@
+<% for (let i=0; i < get_data.length; i++) {%>
+     <tr>
+        <td><%= i+1 %></td>
+        <td>
+            <button type="button" class="btn btn-warning btn-sm d-grid gap-2 col-12 mx-auto"><%= get_data[i].suhu %></button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-warning btn-sm d-grid gap-2 col-12 mx-auto"><%= get_data[i].kelembaban %></button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-warning btn-sm d-grid gap-2 col-12 mx-auto"><%= get_data[i].power %></button>
+        </td>
+    </tr>
+<%}%>
