@@ -9,7 +9,8 @@ const session = require('express-session');
 const cors = require('cors');
 const cookieParse = require('cookie-parser');
 
-const Index = require('./apps/routes/index.route');
+const Index = require('./apps/routes/index.router');
+const Node = require('./apps/routes/node.route');
 
 const {config} = require('dotenv');
 config();
@@ -38,6 +39,7 @@ app.use(cookieParse());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', Index);
+app.use('/node', Node);
 
 app.use(function (req, res, next){
     next(createError(404));

@@ -1,7 +1,7 @@
 const NodeSchema = require('../models/node.model')
 
-function getNode() {
-   const getData =  NodeSchema.find().limit(5);
+function getNode(limit) {
+   const getData =  NodeSchema.find().limit(limit);
    return getData;
 }
 

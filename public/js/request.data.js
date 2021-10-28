@@ -15,7 +15,7 @@ $(document).ready(function (){
     //======== Get Node ========//
     setInterval(() => {
         var client = new HttpClient();
-        client.get('http://localhost:8000/get', function (data) {
+        client.get('http://localhost:8000/node', function (data) {
             $('#node-data').html(data);
         })
     }, 1500)
