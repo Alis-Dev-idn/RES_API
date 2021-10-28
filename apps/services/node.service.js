@@ -16,7 +16,7 @@ function delOneNode(id) {
 }
 
 function postNode(name){
-    const post = NodeSchema({name: name});
+    const post = NodeSchema({node_name: name});
     post.save();
     return post;
 }

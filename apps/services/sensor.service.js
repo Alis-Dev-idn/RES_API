@@ -6,8 +6,8 @@ function getSensor(id ,limit){
     return data;
 }
 
-function postSensor(id, name, temperature, humidity, power){
-    const post = SensorSchema({id, name, temperature, humidity, power})
+function postSensor(id, temperature, humidity, power){
+    const post = SensorSchema({id, temperature, humidity, power})
     post.save();
     return post;
 }

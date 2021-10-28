@@ -34,7 +34,7 @@ function main(){
 function get_data(){
     axios({
         method: "GET",
-        url: `${base_url}/get/id`,
+        url: `${base_url}/node/id`,
         headers: {"token":`${token}`}
     }).then(function (id){
         const id_n = id.data;

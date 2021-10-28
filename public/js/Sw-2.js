@@ -16,7 +16,7 @@ $(document).ready(function (){
                 const data = {
                     "name": `${node}`
                 }
-                fetch(`${base_url}`, {
+                fetch(`${base_url}/node`, {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: { 'Content-Type': 'application/json' }
@@ -139,7 +139,7 @@ $(document).ready(function (){
                     if (result.isConfirmed)
                     {
                         //proses delete
-                        fetch(`${base_url}/${id}`, {
+                        fetch(`${base_url}/node/${id}`, {
                             method: 'DELETE',
                             body: "",
                             headers: { 'Content-Type': 'application/json' }
