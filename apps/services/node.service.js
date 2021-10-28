@@ -1,7 +1,7 @@
 const NodeSchema = require('../models/node.model')
 
 function getNode() {
-   const getData =  NodeSchema.find();
+   const getData =  NodeSchema.find().limit(5);
    return getData;
 }
 
@@ -10,9 +10,15 @@ function oneNode(id) {
     return getData;
 }
 
-function delOne(id) {
+function delOneNode(id) {
     const delData = NodeSchema.deleteOne({_id: id})
     return delData;
 }
 
-module.exports = {getNode, oneNode, delOne};
+function postNode(name){
+    const post = NodeSchema({name: name});
+    post.save();
+    return post;
+}
+
+module.exports = {getNode, oneNode, delOneNode, postNode};
