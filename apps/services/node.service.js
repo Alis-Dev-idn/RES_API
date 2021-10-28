@@ -10,4 +10,9 @@ function oneNode(id) {
     return getData;
 }
 
-module.exports = {getNode, oneNode};
+function delOne(id) {
+    const delData = NodeSchema.deleteOne({_id: id})
+    return delData;
+}
+
+module.exports = {getNode, oneNode, delOne};
