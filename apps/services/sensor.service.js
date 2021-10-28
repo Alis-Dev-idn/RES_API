@@ -1,8 +1,8 @@
 const SensorSchema = require('../models/sensor.model');
 const {model} = require("mongoose");
 
-function getSensor(){
-    const data = SensorSchema.find().sort({createdAt: -1}).limit(10);
+function getSensor(id ,limit){
+    const data = SensorSchema.find({node_id: id}).sort({createdAt: -1}).limit(limit);
     return data;
 }
 

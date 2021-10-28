@@ -11,6 +11,7 @@ const cookieParse = require('cookie-parser');
 
 const Index = require('./apps/routes/index.router');
 const Node = require('./apps/routes/node.route');
+const Sensor = require('./apps/routes/sensor.route');
 
 const {config} = require('dotenv');
 config();
@@ -40,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', Index);
 app.use('/node', Node);
+app.use('/sensor', Sensor);
 
 app.use(function (req, res, next){
     next(createError(404));

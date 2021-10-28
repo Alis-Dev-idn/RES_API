@@ -33,7 +33,7 @@ $(document).ready(function (){
 
     function request(url, id){
         var client = new HttpClient();
-        client.get(`${url}/get/sensor/${id}`, function (sensor) {
+        client.get(`${url}/sensor/${id}`, function (sensor) {
             $('#sensor').html(sensor);
         })
     }
