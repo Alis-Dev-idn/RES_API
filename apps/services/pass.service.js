@@ -6,9 +6,9 @@ function PassHast(password){
     return hitHast;
 }
 
-function compireHast(password ,reqPass){
-    const compire = bcrypt.compare(password, reqPass);
-    return compire;
+function compareHast(password ,reqPass){
+    const compare = bcrypt.compare(password, reqPass);
+    return compare;
 }
 
-module.exports = {PassHast, compireHast};
+module.exports = {PassHast, compareHast};
