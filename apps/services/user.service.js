@@ -1,7 +1,12 @@
 const UserSchema = require('../models/user.model');
 
-function getUser(){
-    const getData = UserSchema.find({_id:0, password: 0}).limit(5);
+function getUser(limit){
+    const getData = UserSchema.find({_id:0, password: 0}).limit(limit);
+    return getData;
+}
+
+function getOneUser(email, limit) {
+    const getData = UserSchema.findOne({email: email}).limit(limit);
     return getData;
 }
 
@@ -20,4 +25,4 @@ function dellUser(id){
     const dell = UserSchema.deleteOne({_id: id});
 }
 
-module.exports = {getUser, postUser, updateUser, dellUser}
+module.exports = {getUser, postUser, updateUser, dellUser, getOneUser}
