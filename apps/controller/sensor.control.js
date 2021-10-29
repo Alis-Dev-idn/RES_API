@@ -14,7 +14,12 @@ const postData = async (req, res) => {
     const IdCek = await oneNode(node_id);
     if(!IdCek) return res.status(202).send('data not found!');
     const post = await postSensor(node_id, suhu, kelembaban, power);
-    res.status(200).send('success post!');
+    res.status(200).send('ok');
 }
 
-module.exports = {getData, postData};
+const dataSensor = async (req, res) => {
+    const get_data = await getSensor(`${req.params.id}`, 10);
+    res.status(200).send(get_data);
+}
+
+module.exports = {getData, postData, dataSensor};

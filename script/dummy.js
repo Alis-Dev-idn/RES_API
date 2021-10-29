@@ -50,7 +50,7 @@ function get_data(){
 function post_sensor(id, number){
     axios({
         method: "POST",
-        url: `${base_url}/sensor`,
+        url: `${base_url}/sensor/id`,
         headers: {"token": `${token}`},
         data: {
                 node_id: `${id}`,

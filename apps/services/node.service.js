@@ -1,7 +1,7 @@
 const NodeSchema = require('../models/node.model')
 
 function getNode(limit) {
-   const getData =  NodeSchema.find().limit(limit);
+   const getData =  NodeSchema.find().limit(limit).sort({createdAt: -1});
    return getData;
 }
 
