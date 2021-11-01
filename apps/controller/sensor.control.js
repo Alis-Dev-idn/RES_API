@@ -11,11 +11,11 @@ const getData = async (req, res) => {
 }
 
 const postData = async (req, res) => {
-    const {error} = SensorVal.validate(req.body);
-    if(error) return res.status(400).send(error.details[0].message);
     const{node_id, suhu, kelembaban, power} = req.body
+    const {error} = SensorVal.validate({node_id, suhu, kelembaban, power});
+    if(error) return res.status(400).send(error.details[0].message), console.log(error.details[0].message);
     const IdCek = await oneNode(node_id);
-    if(!IdCek) return res.status(202).send('data not found!');
+    if(!IdCek) return res.status(400).send('data not found!'), console.log(IdCek);
     const post = await postSensor(node_id, suhu, kelembaban, power);
     res.status(200).send('ok');
 }

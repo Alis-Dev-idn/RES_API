@@ -7,8 +7,8 @@ const UserVal = joi.object({
 
 const SensorVal = joi.object({
     node_id: joi.string().required(),
-    temperature: joi.number().min(-100).max(1000).required(),
-    humidity: joi.number().min(0).max(100).required(),
+    suhu: joi.number().min(-100).max(1000).required(),
+    kelembaban: joi.number().min(0).max(100).required(),
     power: joi.number().min(0).max(300).required()
 });
 
