@@ -1,17 +1,20 @@
 const UserSchema = require('../models/user.model');
+const {PassHast} = require('./pass.service');
 
 function getUser(limit){
-    const getData = UserSchema.find({_id:0, password: 0}).limit(limit);
+    const getData = UserSchema.find().limit(limit);
     return getData;
 }
 
-function getOneUser(email, limit) {
-    const getData = UserSchema.findOne({email: email}).limit(limit);
-    return getData;
+function getOneUser(email) {
+    const getData = UserSchema.findOne({email: email});
+    const pass = getData.password;
+    return pass;
 }
 
 function postUser(email, password){
-    const post = UserSchema({email, password});
+    const hast = PassHast(`${password}`);
+    const post = UserSchema({email, hast});
     post.save();
     return post;
 }

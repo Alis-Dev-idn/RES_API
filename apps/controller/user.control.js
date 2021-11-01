@@ -10,5 +10,11 @@ const get_One = async (req, res) => {
     return getData
 }
 
+const userLogin = async (req, res) => {
+    const getData = await getOneUser(`${req.body.email}`);
+    if(!getData) return res.status(401).send('Data Not Found!!');
+
+}
+
 module.exports = {createUser, get_One};
 

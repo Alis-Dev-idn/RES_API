@@ -1,5 +1,8 @@
 const {getNode, oneNode, delOneNode, postNode} = require('../services/node.service');
 const {delAll} = require('../services/sensor.service');
+const {getOneUser} = require('../services/user.service');
+const {compareHast} = require('../services/pass.service');
+const {UserVal, NodeVal} = require('../config/validation');
 const {config} = require('dotenv');
 config();
 
@@ -16,6 +19,16 @@ const dellNode = async (req, res) => {
 }
 
 const getId = async (req, res) => {
+    //validation
+    const {cekInput} = UserVal.validate(req.body);
+    if(cekInput) return res.status(400).send(cekInput.details[0].message)
+    //cek user ada atau tidak
+    const cekUser = getOneUser(`${req.header('email')}`, 1);
+    if(!cekUser) return res.status(401).send('User not Found!')
+    //cek password
+    const cekToken = compareHast(`${req.header('password')}`, `${cekUser}`);
+    if(!cekToken) return res.status(401).send('password wrong!');
+    //ambil data
     const getData = await getNode(5);
     res.status(200).send(getData);
 }
