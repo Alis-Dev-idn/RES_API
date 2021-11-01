@@ -113,8 +113,6 @@ $(document).ready(function () {
                     })
                 } else if (result.isDenied) {
                     //delete Node
-                    let data = 0;
-                    let out;
                     Swal.fire({
                         title: `Hapus Node ${name}?`,
                         icon: 'warning',
