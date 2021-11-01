@@ -1,5 +1,6 @@
 const {getSensor, postSensor, delAll} = require('../services/sensor.service');
 const {oneNode} = require('../services/node.service');
+const {SensorVal} = require('../config/validation');
 const {config} = require('dotenv');
 config();
 
@@ -10,6 +11,8 @@ const getData = async (req, res) => {
 }
 
 const postData = async (req, res) => {
+    const {error} = SensorVal.validate(req.body);
+    if(error) return res.status(400).send(error.details[0].message);
     const{node_id, suhu, kelembaban, power} = req.body
     const IdCek = await oneNode(node_id);
     if(!IdCek) return res.status(202).send('data not found!');
