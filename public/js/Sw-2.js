@@ -154,3 +154,7 @@ $(document).ready(function () {
 })
         //======= END EDIT NODE =======//
 
+function test(){
+    const data = "Ok";
+    return data;
+}

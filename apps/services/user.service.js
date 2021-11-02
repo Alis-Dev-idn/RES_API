@@ -8,8 +8,12 @@ function getUser(limit){
 
 function getOneUser(email) {
     const getData = UserSchema.findOne({email: email});
-    const pass = getData.password;
-    return pass;
+    return getData;
+}
+
+function getUserId(Id){
+    const getData = UserSchema.findById(Id);
+    return getData;
 }
 
 function postUser(email, password){
@@ -28,4 +32,4 @@ function dellUser(id){
     const dell = UserSchema.deleteOne({_id: id});
 }
 
-module.exports = {getUser, postUser, updateUser, dellUser, getOneUser}
+module.exports = {getUser, postUser, updateUser, dellUser, getOneUser, getUserId}
