@@ -1,8 +1,8 @@
-const get_token = require('../services/token.service');
+const getToken = require('../controller/token.controler');
 const express = require('express');
 
 const Token = express.Router();
 
-Token.get('/', get_token);
+Token.get('/', getToken);
 
 module.exports = Token;
