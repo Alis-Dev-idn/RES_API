@@ -13,45 +13,46 @@ $(document).ready(function () {
     })
 
     //======= POST DATA NODE =======//
-    $('#modal_input').on('click', function () {
-        var base_url = $(this).data("url");
-        Swal.fire({
-            title: `Input New Node`,
-            input: "text",
-            inputAttributes: {
-                autocapitalize: 'off'
-            },
-            showCancelButton: true,
-            confirmButtonText: 'Input',
-            showLoaderOnConfirm: true,
-            preConfirm: (node) => {
-                if (`${node}` === "" || null) return Swal.fire('nilai input tidak boleh kosong', '', 'info');
-                const data = {
-                    "name": `${node}`
-                }
-                fetch(`${base_url}/node`, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {'Content-Type': 'application/json'}
-                })
-                    .then(response => {
-                        Toast.fire({
-                            icon: 'success',
-                            title: `berhasil ditambahkan`
-                        })
-                        if (!response.ok) {
-                            throw new Error(response.statusText)
-                        }
-                        return response.json()
-                    })
-                    .catch(error => {
-                        Toast.fire({
-                            icon: 'warning',
-                            title: `${error}`
-                        })
-                    })
-            }
-        })
+    // $('#modal_input').on('click', function () {
+    //     var base_url = $(this).data("url");
+    //     Swal.fire({
+    //         title: `Input New Node`,
+    //         input: "text",
+    //         inputAttributes: {
+    //             autocapitalize: 'off'
+    //         },
+    //         showCancelButton: true,
+    //         confirmButtonText: 'Input',
+    //         showLoaderOnConfirm: true,
+    //         preConfirm: (node) => {
+    //             if (`${node}` === "" || null) return Swal.fire('nilai input tidak boleh kosong', '', 'info');
+    //             const data = {
+    //                 "name": `${node}`
+    //             }
+    //             fetch(`${base_url}/node`, {
+    //                 method: 'POST',
+    //                 body: JSON.stringify(data),
+    //                 headers: {'Content-Type': 'application/json'}
+    //             })
+    //                 .then(response => {
+    //                     Toast.fire({
+    //                         icon: 'success',
+    //                         title: `berhasil ditambahkan`
+    //                     })
+    //                     if (!response.ok) {
+    //                         throw new Error(response.statusText)
+    //                     }
+    //                     return response.json()
+    //                 })
+    //                 .catch(error => {
+    //                     Toast.fire({
+    //                         icon: 'warning',
+    //                         title: `${error}`
+    //                     })
+    //                 })
+    //         }
+    //     })
+    // })
         //======= END POST DATA NODE =======//
 
         //======= EDIT NODE =======//
@@ -150,7 +151,6 @@ $(document).ready(function () {
                 }
             })
         })
-    })
 })
         //======= END EDIT NODE =======//
 
