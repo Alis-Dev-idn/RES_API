@@ -13,6 +13,7 @@ const SensorVal = joi.object({
 });
 
 const NodeVal = joi.object({
+    user: joi.string().required(),
     name: joi.string().required()
 });
 

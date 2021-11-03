@@ -1,10 +1,11 @@
 $('#logout').hide();
+let idNode;
 $(document).ready(function () {
     $('#login').on('click', function () {
         let base_url = $(this).data("url");
         const title = $('#login').text();
         if (title == 'Login') return UserLogin(title, base_url);
-        if (title == 'Input New Node') return NodeInput(base_url);
+        if (title == 'Input New Node') return NodeInput(base_url, idNode);
     });
 
     $('#logout').on('click' ,function () {
@@ -47,6 +48,7 @@ function postLogin(email, password, base_url) {
         data: {"email":`${email}`, 'password': `${password}`},
         headers: {'Content-Type': 'application/json'}
     }).then(function (id){
+        dataId(id.data);
         Swal.fire(`Id : ${id.data}`, '','info');
         getNode(base_url);
         $('#login').text('Input New Node');
@@ -84,4 +86,8 @@ function clearHtml(){
     $('#logout').hide();
     $('#sensor').html('');
     $('#name').html('');
+}
+
+function dataId(id){
+    idNode = id;
 }

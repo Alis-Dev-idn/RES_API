@@ -10,11 +10,13 @@ const Toast = Swal.mixin({
     }
 })
 
-function NodeInput(url){
+function NodeInput(url, id){
+    console.log(id);
     Swal.fire({
         title: `Input New Node`,
         input: "text",
         inputAttributes: {
+           maxlength: 10,
            autocapitalize: 'off'
         },
         showCancelButton: true,
@@ -23,6 +25,7 @@ function NodeInput(url){
         preConfirm: (node) => {
             if (`${node}` === "" || null) return Swal.fire('nilai input tidak boleh kosong', '', 'info');
             const data = {
+                "user": `${id}`,
                 "name": `${node}`
             }
             axios({

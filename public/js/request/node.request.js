@@ -6,7 +6,7 @@ function getNode(base_url){
         client.get(`${base_url}/node`, function (data) {
             $('#node-data').html(data);
         })
-    }, 1500);
+    }, 2000);
 }
 
 function NodeStop(){

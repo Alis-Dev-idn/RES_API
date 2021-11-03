@@ -15,8 +15,8 @@ function delOneNode(id) {
     return delData;
 }
 
-function postNode(name){
-    const post = NodeSchema({node_name: name});
+function postNode(user, name){
+    const post = NodeSchema({user: user, node_name: name});
     post.save();
     return post;
 }

@@ -1,7 +1,8 @@
 <html>
     <head>
         <title> <%= title %> </title>
-        <link href="http://localhost:8000/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<%- Base_Url %>/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<%- Base_Url %>/css/all.min.css" rel="stylesheet">
     </head>
     <body>
         <div class="container mt-5">
@@ -65,8 +66,10 @@
         <script src="<%= Base_Url %>/js/bootstrap.bundle.min.js"></script>
         <script src="<%= Base_Url %>/js/jquery-3.6.0.min.js"></script>
         <script src="<%= Base_Url %>/js/sweetalert2.all.min.js"></script>
+        <script src="<%= Base_Url %>/js/all.min.js"></script>
         <!-- Node function -->
         <script src="<%= Base_Url %>/js/input/node.input.js"></script>
+        <script src="<%= Base_Url %>/js/delete/node.delete.js"></script>
         <!-- User function -->
         <script src="<%= Base_Url %>/js/user/login.user.js"></script>
         <!-- Request data function -->

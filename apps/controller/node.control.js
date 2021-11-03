@@ -34,9 +34,10 @@ const getId = async (req, res) => {
 }
 
 const postData = async (req, res) => {
-    const {error} = NodeVal.validate(req.body);
+    const {user, name} = req.body;
+    const {error} = NodeVal.validate({user, name});
     if(error) return res.status(400).send(error.details[0].message);
-    await postNode(`${req.body.name}`);
-    res.status(200).send(`Success Add ${req.body.name}`);
+    await postNode(`${user}`, `${name}`);
+    res.status(200).send(`Success Add ${name}`);
 }
 module.exports = {getData, dellNode, getId, postData};

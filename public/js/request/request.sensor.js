@@ -20,7 +20,7 @@ function getSensor(base_url, id) {
         client.get(`${base_url}/sensor/${id}`, function (sensor) {
             $('#sensor').html(sensor);
         })
-    }, 1000);
+    }, 2000);
 }
 
 function stopGetSensor(){

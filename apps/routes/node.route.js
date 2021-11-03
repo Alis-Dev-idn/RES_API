@@ -6,6 +6,6 @@ const Node = express.Router();
 Node.get('/', getData);
 Node.get('/id/', authKey, getId);
 Node.post('/', postData);
-Node.delete('/:id', authKey, dellNode);
+Node.delete('/:id', dellNode);
 
 module.exports = Node;
