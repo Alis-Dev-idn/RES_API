@@ -13,9 +13,8 @@
 <!--                             <button type="button" class="btn btn-outline-primary mb-2 btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Input New Node</button> -->
 <!--                             <button type="button" class="btn btn-outline-primary mb-2 btn-sm add-data" id="modal_input" data-url="<%- Base_Url %>">Input New Node</button> -->
 
-                            <div id="login_html">
-                                <button type="button" class="btn btn-outline-primary mb-2 btn-sm add-data" id="login" data-url="<%- Base_Url %>">Login</button>
-                            </div>
+                            <button type="button" class="btn btn-outline-primary mb-2 btn-sm add-data" id="login" data-url="<%- Base_Url %>">Login</button>
+                            <button type="button" class="btn btn-outline-danger mb-2 btn-sm add-data" id="logout" data-url="<%- Base_Url %>">Logout</button>
                             <div id="logout_html">
 
                             </div>
@@ -66,10 +65,13 @@
         <script src="<%= Base_Url %>/js/bootstrap.bundle.min.js"></script>
         <script src="<%= Base_Url %>/js/jquery-3.6.0.min.js"></script>
         <script src="<%= Base_Url %>/js/sweetalert2.all.min.js"></script>
-        <script src="<%= Base_Url %>/js/request.data.js"></script>
-        <script src="<%= Base_Url %>/js/Sw-2.js"></script>
-        <script src="<%= Base_Url %>/js/cek.user.js"></script>
-        <script src="<%= Base_Url %>/js/request.node.js"></script>
-
+        <!-- Node function -->
+        <script src="<%= Base_Url %>/js/input/node.input.js"></script>
+        <!-- User function -->
+        <script src="<%= Base_Url %>/js/user/login.user.js"></script>
+        <!-- Request data function -->
+        <script src="<%= Base_Url %>/js/request/http.client.js"></script>
+        <script src="<%= Base_Url %>/js/request/request.sensor.js"></script>
+        <script src="<%= Base_Url %>/js/request/node.request.js"></script>
     </body>
 </html>
