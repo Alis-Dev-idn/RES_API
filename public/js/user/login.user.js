@@ -1,11 +1,11 @@
 $('#logout').hide();
-let idNode;
+
 $(document).ready(function () {
     $('#login').on('click', function () {
         let base_url = $(this).data("url");
         const title = $('#login').text();
         if (title == 'Login') return UserLogin(title, base_url);
-        if (title == 'Input New Node') return NodeInput(base_url, idNode);
+        if (title == 'Input New Node') return NodeInput(base_url, idNode, token);
     });
 
     $('#logout').on('click' ,function () {
@@ -53,7 +53,7 @@ function postLogin(email, password, base_url) {
             icon: 'success',
             title: `Success Login`
         })
-        getNode(base_url, `${id.data}`);
+        GetToken(base_url, email, password, id.data);
         $('#login').text('Input New Node');
         $('#logout').show();
         $('#new-user').hide();
@@ -78,6 +78,11 @@ function UserLogout() {
     });
 }
 
+let idNode;
+let token;
 function dataId(id){
     idNode = id;
+}
+function tokenId(tk){
+    token = tk;
 }

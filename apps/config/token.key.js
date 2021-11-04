@@ -8,7 +8,7 @@ const authKey = (req, res, next) => {
         req.user = token;
         next();
     }catch (err) {
-        res.status(400).send('Token Expired')
+        res.status(400).send('Sesi Anda Habis Silakan Login Ulang!')
     }
 }
 

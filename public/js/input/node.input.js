@@ -10,7 +10,7 @@ const Toast = Swal.mixin({
     }
 })
 
-function NodeInput(url, id){
+function NodeInput(url, id, token){
     Swal.fire({
         title: `Input New Node`,
         input: "text",
@@ -31,7 +31,7 @@ function NodeInput(url, id){
                 method: "POST",
                 url: `${url}/node`,
                 data: data,
-                headers: {'Content-Type': 'application/json'}
+                headers: {'Content-Type': 'application/json', "token":`${token}`}
             }).then(function (id){
                 Toast.fire({
                    icon: 'success',

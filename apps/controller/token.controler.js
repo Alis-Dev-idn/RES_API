@@ -4,18 +4,15 @@ const {compareHast} = require('../services/pass.service');
 const {UserVal} = require("../config/validation");
 
 const getToken = async (req, res) => {
-    // //validation
-    // const {error} = UserVal.validate(req.body);
-    // if(error) return res.status(400).send(error.details[0].message)
-    // //cek user ada atau tidak
-    // const cekUser = getOneUser(`${req.header('email')}`, 1);
-    // if(!cekUser) return res.status(401).send('User not Found!')
-    // //cek password
-    // const cekToken = compareHast(`${req.header('password')}`, `${cekUser}`);
-    // if(!cekToken) return res.status(401).send('password wrong!');
+    const {error} = UserVal.validate(req.body);
+    if(error) return res.status(400).send(error.details[0].message)
+    const getData = await getOneUser(`${req.body.email}`);
+    if(!getData) return res.status(401).send(`Email (${req.body.email}) tidak terdaftar!`);
+    const cekPass = await compareHast(`${req.body.password}`, `${getData.password}`);
+    if(!cekPass) return res.status(401).send('password wrong!');
 
     const token = get_token();
-    res.status(200).send('token :' + token);
+    res.status(200).send(token);
 }
 
 module.exports = getToken;

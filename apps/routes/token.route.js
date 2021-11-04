@@ -3,6 +3,6 @@ const express = require('express');
 
 const Token = express.Router();
 
-Token.get('/', getToken);
+Token.post('/', getToken);
 
 module.exports = Token;
