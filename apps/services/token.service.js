@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 function get_token(){
     const token = jwt.sign({
-        exp: Math.floor(Date.now()/1000) + (60 * 1)
+        exp: Math.floor(Date.now()/1000) + (60 * 60)
     }, process.env.API_KEY);
     return token;
 }

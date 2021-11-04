@@ -5,7 +5,7 @@ const express = require('express');
 const Sensor = express.Router();
 
 Sensor.get('/:id', getData);
-Sensor.get('/id/:id', authKey, dataSensor)
-Sensor.post('/', postData);
+Sensor.get('/id/', authKey, dataSensor)
+Sensor.post('/', authKey, postData);
 
 module.exports = Sensor;

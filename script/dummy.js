@@ -1,9 +1,8 @@
 const axios = require('axios');
-const {exist} = require("joi");
+const {config} = require('dotenv');
+config();
 
 const base_url = `http://localhost:8000`
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzU3NDE3MTksImlhdCI6MTYzNTc0MTQxOX0.brNJYusIB-CqFHwxQm-qeH4a2xs1uMO7whOpd3ltSwI'
-
 
 let n = 0;
 let job;

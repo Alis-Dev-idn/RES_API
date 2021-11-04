@@ -1,5 +1,5 @@
 $('#logout').hide();
-
+$('#dummy').hide();
 $(document).ready(function () {
     $('#login').on('click', function () {
         let base_url = $(this).data("url");
@@ -49,6 +49,7 @@ function postLogin(email, password, base_url) {
         headers: {'Content-Type': 'application/json'}
     }).then(function (id){
         dataId(id.data);
+        setUrl(base_url);
         Toast.fire({
             icon: 'success',
             title: `Success Login`
@@ -80,9 +81,13 @@ function UserLogout() {
 
 let idNode;
 let token;
+let Url;
 function dataId(id){
     idNode = id;
 }
 function tokenId(tk){
     token = tk;
+}
+function setUrl(url){
+    Url = url;
 }

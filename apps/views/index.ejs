@@ -30,6 +30,17 @@
                                 <%- include('./models/table.model.node.ejs') %>
                             </div>
                        </div>
+
+                        <div class="card shadow" id="dummy">
+                              <div class="card-body text-center">
+                                   <h5 class="mb-2" id="name-node"></h5>
+                                   <div>
+                                        <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>
+                                   </div>
+                                   <button type="button" class="btn btn-outline-danger mt-2 btn-sm add-data" id="stop-dummy" data-url="<%- Base_Url %>">Stop</button>
+                              </div>
+                        </div>
+
                 </div>
 
                 <div class="col-lg-8 col-md-8">
@@ -53,6 +64,21 @@
                 </div>
             </div>
         </div>
+<!--         <div class="container mt-2" id="dummy"> -->
+<!--             <div class="row"> -->
+<!--                 <div class="col-lg-4 col-md-4 mb-3"> -->
+<!--                     <div class="card shadow"> -->
+<!--                           <div class="card-body text-center"> -->
+<!--                                <h5 class="mb-2" id="name-node"></h5> -->
+<!--                                <div> -->
+<!--                                     <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span> -->
+<!--                                </div> -->
+<!--                                <button type="button" class="btn btn-outline-danger mt-2 btn-sm add-data" id="stop-dummy" data-url="<%- Base_Url %>">Stop</button> -->
+<!--                           </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </div> -->
 
     <!-- Modal -->
     <%- include('./models/modal.model.ejs')%>
@@ -67,9 +93,11 @@
         <!-- Node function -->
         <script src="<%= Base_Url %>/js/input/node.input.js"></script>
         <script src="<%= Base_Url %>/js/delete/node.delete.js"></script>
+        <script src="<%= Base_Url %>/js/delete/node.edit.js"></script>
         <!-- User function -->
         <script src="<%= Base_Url %>/js/user/login.user.js"></script>
         <script src="<%= Base_Url %>/js/user/create.user.js"></script>
+        <script src="<%= Base_Url %>/js/dummy/dummy.function.js"></script>
         <!-- Request data function -->
         <script src="<%= Base_Url %>/js/request/http.client.js"></script>
         <script src="<%= Base_Url %>/js/request/request.sensor.js"></script>

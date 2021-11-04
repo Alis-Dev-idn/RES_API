@@ -31,7 +31,7 @@ function getNode(url, id, token){
         // client.get(`${url}/node/user/${id}`, function (data) {
         //     $('#node-data').html(data);
         // })
-    }, 2000);
+    }, 5000);
 }
 
 function NodeStop(){
