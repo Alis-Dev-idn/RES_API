@@ -11,7 +11,6 @@ const Toast = Swal.mixin({
 })
 
 function NodeInput(url, id){
-    console.log(id);
     Swal.fire({
         title: `Input New Node`,
         input: "text",

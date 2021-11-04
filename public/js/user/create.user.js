@@ -1,20 +1,12 @@
-$('#logout').hide();
-let idNode;
 $(document).ready(function () {
-    $('#login').on('click', function () {
+    $('#new-user').on('click' ,function () {
         let base_url = $(this).data("url");
-        const title = $('#login').text();
-        if (title == 'Login') return UserLogin(title, base_url);
-        if (title == 'Input New Node') return NodeInput(base_url, idNode);
+        const title = $('#new-user').text();
+        CreateUser(title, base_url);
     });
+})
 
-    $('#logout').on('click' ,function () {
-        UserLogout();
-    });
-});
-
-//========== function Login LogOut ===========//
-function UserLogin(title, base_url){
+function CreateUser(title, url){
     Swal.fire({
         title: `${title}`,
         html:
@@ -30,54 +22,29 @@ function UserLogin(title, base_url){
             autocapitalize: 'off'
         },
         showCancelButton: true,
-        confirmButtonText: 'Login',
+        confirmButtonText: 'Create Account',
         showLoaderOnConfirm: true,
         preConfirm: () => {
             const email = `${$('#user').val()}`;
             const password = `${$('#pass').val()}`;
             if(email == '' || password == '') return Swal.fire(`Ops kolom tidak boleh kosong!`, '','warning');
-            postLogin(email, password, base_url);
+            PostCreate(url, email, password);
         }
     });
 }
 
-function postLogin(email, password, base_url) {
+function PostCreate(url, email, password){
     axios({
         method: "POST",
-        url: `${base_url}/user/login`,
+        url: `${url}/user/new`,
         data: {"email":`${email}`, 'password': `${password}`},
         headers: {'Content-Type': 'application/json'}
     }).then(function (id){
-        dataId(id.data);
         Toast.fire({
             icon: 'success',
-            title: `Success Login`
+            title: `${id.data}`
         })
-        getNode(base_url, `${id.data}`);
-        $('#login').text('Input New Node');
-        $('#logout').show();
-        $('#new-user').hide();
     }).catch(err => {
         Swal.fire(`${err.response.data}`, '','error');
     })
-}
-
-function UserLogout() {
-    Swal.fire({
-        title: `Logout`,
-        text: 'Ingin Keluar?',
-        inputAttributes: {
-            autocapitalize: 'off'
-        },
-        showCancelButton: true,
-        confirmButtonText: 'Logout',
-        showLoaderOnConfirm: true,
-        preConfirm: () => {
-            location.reload()
-        }
-    });
-}
-
-function dataId(id){
-    idNode = id;
 }

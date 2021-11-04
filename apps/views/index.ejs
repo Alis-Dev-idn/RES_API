@@ -11,14 +11,11 @@
                     <div class="card shadow mb-4">
                         <div class="card-header">
                             <h2 class="text-center">Example</h2>
-<!--                             <button type="button" class="btn btn-outline-primary mb-2 btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Input New Node</button> -->
-<!--                             <button type="button" class="btn btn-outline-primary mb-2 btn-sm add-data" id="modal_input" data-url="<%- Base_Url %>">Input New Node</button> -->
 
                             <button type="button" class="btn btn-outline-primary mb-2 btn-sm add-data" id="login" data-url="<%- Base_Url %>">Login</button>
                             <button type="button" class="btn btn-outline-danger mb-2 btn-sm add-data" id="logout" data-url="<%- Base_Url %>">Logout</button>
-                            <div id="logout_html">
+                            <button type="button" class="btn btn-outline-success mb-2 btn-sm add-data" id="new-user" data-url="<%- Base_Url %>">Create Account</button>
 
-                            </div>
                         </div>
                     </div>
                  <div>
@@ -72,6 +69,7 @@
         <script src="<%= Base_Url %>/js/delete/node.delete.js"></script>
         <!-- User function -->
         <script src="<%= Base_Url %>/js/user/login.user.js"></script>
+        <script src="<%= Base_Url %>/js/user/create.user.js"></script>
         <!-- Request data function -->
         <script src="<%= Base_Url %>/js/request/http.client.js"></script>
         <script src="<%= Base_Url %>/js/request/request.sensor.js"></script>

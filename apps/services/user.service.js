@@ -7,6 +7,7 @@ function getUser(limit){
 }
 
 function getOneUser(email) {
+
     const getData = UserSchema.findOne({email: email});
     return getData;
 }
@@ -16,9 +17,9 @@ function getUserId(Id){
     return getData;
 }
 
-function postUser(email, password){
-    const hast = PassHast(`${password}`);
-    const post = UserSchema({email, hast});
+async function postUser(email, password){
+    const HastData = await PassHast(password);
+    const post = await UserSchema({email: email, password: HastData});
     post.save();
     return post;
 }

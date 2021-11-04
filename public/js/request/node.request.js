@@ -1,9 +1,9 @@
 let job;
 
-function getNode(base_url){
+function getNode(url, id){
     job = setInterval(() => {
         let client = new HttpClient();
-        client.get(`${base_url}/node`, function (data) {
+        client.get(`${url}/node/user/${id}`, function (data) {
             $('#node-data').html(data);
         })
     }, 2000);

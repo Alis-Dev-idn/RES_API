@@ -1,14 +1,16 @@
 const bcrypt = require('bcryptjs');
 
-function PassHast(password){
-    const hast = bcrypt.genSalt(10);
-    const hitHast = bcrypt.hash(password, hast);
-    return hitHast;
+async function PassHast(password){
+
+    const hast = await bcrypt.genSalt(10);
+    const passHast = await bcrypt.hash(password, hast);
+    return passHast;
+
 }
 
-function compareHast(password ,reqPass){
-    const compare = bcrypt.compare(password, reqPass);
-    return compare;
+async function compareHast(password ,hash){
+    const data = await bcrypt.compare(password, hash);
+    return data;
 }
 
 module.exports = {PassHast, compareHast};

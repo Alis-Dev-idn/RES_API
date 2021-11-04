@@ -1,18 +1,17 @@
 const NodeSchema = require('../models/node.model')
 
-function getNode(limit) {
-   const getData =  NodeSchema.find().limit(limit).sort({createdAt: -1});
+function getNode(id, limit) {
+   const getData =  NodeSchema.find({user: id}).limit(limit).sort({createdAt: -1});
    return getData;
 }
 
-function oneNode(id) {
-    const getData = NodeSchema.findOne({_id: id});
+async function oneNode(id) {
+    const getData = await NodeSchema.findOne({_id: id});
     return getData;
 }
 
-function delOneNode(id) {
-    const delData = NodeSchema.deleteOne({_id: id})
-    return delData;
+async function delOneNode(id) {
+    await NodeSchema.deleteOne({_id: id})
 }
 
 function postNode(user, name){

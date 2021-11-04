@@ -7,15 +7,16 @@ const {config} = require('dotenv');
 config();
 
 const getData = async (req, res) => {
-    const get_data = await getNode(5);
+    const get_data = await getNode(`${req.params.id}`, 5);
     const Base_Url = process.env.BASE_URL + ':' + process.env.PORT;
     res.render('./request/node', {get_data, Base_Url});
 }
 
 const dellNode = async (req, res) => {
+    const data = await oneNode(req.params.id);
     await delOneNode(req.params.id);
     await delAll(req.params.id);
-    res.status(200).send('Ok');
+    res.status(200).send(`Success Delete ${data.node_name}`);
 }
 
 const getId = async (req, res) => {
